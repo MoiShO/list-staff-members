@@ -14,13 +14,18 @@ class ChildrenGateway {
     return children;
   }
 
+  Future<List<ChildrenData>> getById(int parentId) async {
+    final db = await this.db.database;
+    final rs =  await db.rawQuery('SELECT * FROM children WHERE parent_id = ?', [parentId]);
+    final children = rs.map((question) => ChildrenData.fromMap(question)).toList();
+    return children;
+  }
+
   Future<void> insert(ChildrenData child) async {
     final db = await this.db.database;
-    final rs = await db.rawQuery('SELECT MAX(number) AS last FROM children');
-    final last = rs.first['last'] ?? 0;
     await db.rawInsert(
-      'INSERT INTO children (id, parent_id, first_name, last_name, patronymic, date_birth) VALUES (?, ?, ?, ?, ?, ?)',
-      [last + 1, child.idParent, child.firstName, child.lastName, child.patronymic, child.dateBirt]
+      'INSERT INTO children (parent_id, first_name, last_name, patronymic, date_birth) VALUES (?, ?, ?, ?, ?)',
+      [child.idParent, child.firstName, child.lastName, child.patronymic, child.dateBirt]
     );
   }
 
@@ -35,5 +40,10 @@ class ChildrenGateway {
   Future<void> delete(int childId) async {
     final db = await this.db.database;
     await db.rawQuery('DELETE FROM children WHERE id = ?', [childId]);
+  }
+
+  Future<void> clear() async {
+    final db = await this.db.database;
+    await db.rawQuery('DELETE FROM children');
   }
 }

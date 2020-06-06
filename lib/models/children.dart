@@ -9,8 +9,8 @@ class ChildrenData {
   int dateBirt;
 
   ChildrenData({
-    @required this.id,
-    @required this.idParent,
+    this.id,
+    this.idParent,
     @required this.firstName,
     @required this.lastName,
     @required this.patronymic,

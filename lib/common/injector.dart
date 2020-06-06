@@ -1,6 +1,7 @@
 import 'package:injector/injector.dart';
 import 'package:list_staff_members/database/db_adapter.dart';
 import 'package:list_staff_members/database/gateaways/gateaways.dart';
+import 'package:list_staff_members/state/childrent_bloc.dart';
 import 'package:list_staff_members/state/parent_bloc.dart';
 
 Future<void> setupInjector() async {
@@ -15,6 +16,13 @@ Future<void> setupInjector() async {
   injector.registerSingleton<ParentGateway>((Injector injector) {
     return ParentGateway(
       db: injector.getDependency<DbAdapter>(),
+    );
+  });
+
+  injector.registerSingleton<ChildrenBloc>((injector) {
+    return ChildrenBloc(
+      // parentGateway: injector.getDependency<ParentGateway>(),
+      childrenGateway: injector.getDependency<ChildrenGateway>(),
     );
   });
 
@@ -77,6 +85,6 @@ Future<void> setupInjector() async {
 
 void closeGlobalBlocs() {
   Injector injector = Injector.appInstance;
-  // injector.getDependency<ChildrenGateway>().close();
-  // injector.getDependency<ParentGate>().close();
+  injector.getDependency<ChildrenBloc>().close();
+  injector.getDependency<ParentBloc>().close();
 }

@@ -1,6 +1,6 @@
 # list_staff_members
 
-Тестовое задание EKF
+EKF
 
 ## Getting Started
 
