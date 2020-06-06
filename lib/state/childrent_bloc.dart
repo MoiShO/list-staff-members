@@ -26,7 +26,6 @@ class ChildrenBloc {
 
   Future<void> append(ChildrenData newChild, {int parentId}) async {
     newChild.idParent = parentId;
-    print(newChild.idParent);
     await childrenGateway.insert(newChild);
     await getChildrenById(parentId);
   }

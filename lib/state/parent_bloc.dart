@@ -21,6 +21,7 @@ class ParentBloc {
   }
 
   Future<void> update() async {
+    // clearBD
     // parentGateway.clear();
     // childrenGateway.clear();
     final data = await Future.wait([parentGateway.getParent(), childrenGateway.getChildren()]);
@@ -34,22 +35,17 @@ class ParentBloc {
     _parentSubject.sink.add(parentBlocData);
   }
 
-  Future<void> appendPreset() async {
-    await Future.forEach<ParentData>(parentsPreset, (parent) => parentGateway.insert(parent));
-    await Future.forEach<ChildrenData>(childrenPreset, (child) => childrenGateway.insert(child));
-    await update();
-  }
+  // add from prets
+  // Future<void> appendPreset() async {
+  //   await Future.forEach<ParentData>(parentsPreset, (parent) => parentGateway.insert(parent));
+  //   await Future.forEach<ChildrenData>(childrenPreset, (child) => childrenGateway.insert(child));
+  //   await update();
+  // }
 
   Future<void> append(ParentData parent) async {
     await parentGateway.insert(parent);
     await update();
   }
-
-  Future<void> removeChildren(int childrenId) async {
-    await childrenGateway.delete(childrenId);
-    return await update();
-  }
-
 
   ValueStream<List<ParentBlocData>> get data => _parentSubject.stream;
 

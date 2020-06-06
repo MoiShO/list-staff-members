@@ -22,13 +22,14 @@ class ParentGateway {
     );
   }
 
-  Future<void> update(ParentData parent) async {
-    final db = await this.db.database;
-    await db.rawUpdate(
-      'UPDATE parents SET first_name = ?, last_name = ?, patronymic = ?, date_birth = ?, position = ?, WHERE id = ?', 
-      [parent.firstName, parent.firstName, parent.lastName, parent.patronymic, parent.dateBirt, parent.position]
-    );
-  }
+  // TODO редактировать
+  // Future<void> update(ParentData parent) async {
+  //   final db = await this.db.database;
+  //   await db.rawUpdate(
+  //     'UPDATE parents SET first_name = ?, last_name = ?, patronymic = ?, date_birth = ?, position = ?, WHERE id = ?', 
+  //     [parent.firstName, parent.firstName, parent.lastName, parent.patronymic, parent.dateBirt, parent.position]
+  //   );
+  // }
 
   // удаляет по ID
   Future<void> delete(int parentId) async {
@@ -36,9 +37,9 @@ class ParentGateway {
     await db.rawQuery('DELETE FROM parents WHERE id = ?', [parentId]);
   }
 
-  // develop
-  Future<void> clear() async {
-    final db = await this.db.database;
-    await db.rawQuery('DELETE FROM parents');
-  }
+  // Удалить записи parents
+  // Future<void> clear() async {
+  //   final db = await this.db.database;
+  //   await db.rawQuery('DELETE FROM parents');
+  // }
 }
