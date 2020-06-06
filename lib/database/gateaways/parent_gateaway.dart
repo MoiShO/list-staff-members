@@ -30,8 +30,15 @@ class ParentGateway {
     );
   }
 
+  // удаляет по ID
   Future<void> delete(int parentId) async {
     final db = await this.db.database;
     await db.rawQuery('DELETE FROM parents WHERE id = ?', [parentId]);
+  }
+
+  // develop
+  Future<void> clear() async {
+    final db = await this.db.database;
+    await db.rawQuery('DELETE FROM parents');
   }
 }

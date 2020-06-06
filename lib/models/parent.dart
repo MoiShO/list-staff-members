@@ -9,7 +9,7 @@ class ParentData {
   String position;
 
   ParentData({
-    @required this.id,
+    this.id,
     @required this.firstName,
     @required this.lastName,
     @required this.patronymic,

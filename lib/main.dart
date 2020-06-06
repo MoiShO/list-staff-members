@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:injector/injector.dart';
 import 'package:list_staff_members/common/injector.dart';
 import 'package:list_staff_members/state/parent_bloc.dart';
-import 'package:list_staff_members/widgets/home.dart';
+import 'package:list_staff_members/widgets/screens/home.dart';
 
 void main() async {
   await setupInjector();
