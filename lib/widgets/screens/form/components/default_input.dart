@@ -7,18 +7,15 @@ class DefaultInput extends StatelessWidget {
     this.hintText,
     this.labelText,
     this.controller,
-    this.focusNode
   }) : super(key: key);
   
   final String hintText;
   final String labelText;
   final TextEditingController controller;
-  final FocusNode focusNode;
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
-      focusNode: focusNode,
       controller: controller,
       decoration: new InputDecoration(
         hintText: hintText,

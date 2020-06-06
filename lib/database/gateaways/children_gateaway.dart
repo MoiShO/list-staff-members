@@ -29,21 +29,23 @@ class ChildrenGateway {
     );
   }
 
-  Future<void> update(ChildrenData child) async {
-    final db = await this.db.database;
-    await db.rawUpdate(
-      'UPDATE children SET parent_id = ?, first_name = ?, last_name = ?, patronymic = ?, date_birth = ? WHERE id = ?', 
-      [child.idParent, child.firstName, child.firstName, child.lastName, child.patronymic, child.dateBirt, child.id]
-    );
-  }
+  // TODO редактировать
+  // Future<void> update(ChildrenData child) async {
+  //   final db = await this.db.database;
+  //   await db.rawUpdate(
+  //     'UPDATE children SET parent_id = ?, first_name = ?, last_name = ?, patronymic = ?, date_birth = ? WHERE id = ?', 
+  //     [child.idParent, child.firstName, child.firstName, child.lastName, child.patronymic, child.dateBirt, child.id]
+  //   );
+  // }
 
   Future<void> delete(int childId) async {
     final db = await this.db.database;
     await db.rawQuery('DELETE FROM children WHERE id = ?', [childId]);
   }
 
-  Future<void> clear() async {
-    final db = await this.db.database;
-    await db.rawQuery('DELETE FROM children');
-  }
+  // Очистить BD children
+  // Future<void> clear() async {
+  //   final db = await this.db.database;
+  //   await db.rawQuery('DELETE FROM children');
+  // }
 }

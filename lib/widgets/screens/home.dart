@@ -10,7 +10,7 @@ import 'package:list_staff_members/models/parent.dart';
 import 'package:list_staff_members/models/parent_bloc_data.dart';
 import 'package:list_staff_members/state/parent_bloc.dart';
 import 'package:list_staff_members/widgets/screens/form/add_form.dart';
-import 'package:list_staff_members/widgets/screens/childrens.dart';
+import 'package:list_staff_members/widgets/screens/children.dart';
 
 class Home extends StatefulWidget {
   const Home({Key key}) : super(key: key);
@@ -127,7 +127,7 @@ class HomeParentWidget extends StatelessWidget {
           onTap: () => Navigator.push(
             context,
             MaterialPageRoute(builder: (BuildContext context) =>
-              Childrens(
+              Children(
                 title: '$fio',
                 parentId: parentId,
               )

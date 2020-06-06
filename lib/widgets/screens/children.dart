@@ -11,21 +11,21 @@ import 'package:list_staff_members/state/parent_bloc.dart';
 import 'package:list_staff_members/widgets/components/button.dart';
 import 'package:list_staff_members/widgets/screens/form/add_form.dart';
 
-class Childrens extends StatefulWidget {
+class Children extends StatefulWidget {
   final String title;
   final int parentId;
 
-  const Childrens({
+  const Children({
     Key key,
     this.title = '', 
     this.parentId,
   }) : super(key: key);
 
   @override
-  _ChildrensState createState() => _ChildrensState();
+  _ChildrenState createState() => _ChildrenState();
 }
 
-class _ChildrensState extends State<Childrens> {
+class _ChildrenState extends State<Children> {
 
   ChildrenBloc childrenBloc;
   ParentBloc parentBloc;
